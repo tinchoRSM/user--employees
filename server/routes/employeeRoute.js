@@ -1,8 +1,8 @@
-const employees = require("express").Router();
+const employeeRoute = require("express").Router();
 const employeeControler = require("../controllers/employeeControler.js");
 
-employees.get('/', employeeControler.getAllEmployees);
-employees.get('/:employeeId', employeeControler.getEmployeeById);
+employeeRoute.get('/', employeeControler.getAllEmployees);
+employeeRoute.get('/:employeeId', employeeControler.getEmployeeById);
 
 
-module.exports = employees;
+module.exports = employeeRoute;

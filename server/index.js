@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 const cors = require("cors");
 
 const userRouter = require("./routes/userRoute.js");
-const dbConnect = require("./database/db.connect.js");
+const db = require("./database/db.connect.js");
 
 const port = process.env.PORT || 3000;
 
@@ -15,7 +15,8 @@ app.use(cors());
 
 app.use("/users",userRouter);
 
-dbConnect();
+db.dbInitilize();
+db.connectToDb();
 
 app.listen(port, () =>{
     console.log(`Server started on port ${port}`);
