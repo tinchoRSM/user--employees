@@ -7,6 +7,7 @@ const getUserById =  (req,res) =>{
 const loginUser = (req,res) =>{
     message = `Attemting to login a user.`;
 
+    
     res.send({message: message});
 }
 

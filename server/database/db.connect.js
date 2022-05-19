@@ -3,7 +3,8 @@ const dbConfig = require("./db.confing.js");
 const dbInitilize = require("./db.initialize.js");
 
 const userModel = require("../models/userModel.js");
-const employeeModel = require("../models/employeeModel.js")
+const employeeModel = require("../models/employeeModel.js");
+const { chainPropTypes } = require("@mui/utils");
 
 
 const sequelize = new Sequelize(dbConfig.DB,dbConfig.USER,dbConfig.PASSWORD, {
@@ -24,6 +25,8 @@ const connectToDb = async() =>{
 const User = sequelize.define("User", userModel);
 const Employee = sequelize.define("Employee", employeeModel);
 
+User.hasMany(Employee);
+Employee.belongsTo(User);
 
 const db = {
     user: User,
