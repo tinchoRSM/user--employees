@@ -7,13 +7,12 @@ const dbInitilize = () => {
         password: process.env.DB_PASSWORD
     });
     
-    connection.query(
-        `CREATE DATABASE IF NOT EXISTS UserEmployees`, (err,results) =>{ 
-            console.log("DB Intilized");
-            console.log("No eror");
-    
-        }
-    );
+    try {
+        connection.query(`CREATE DATABASE IF NOT EXISTS UserEmployees`);
+
+    } catch (error) {
+        throw new Error("Could not create base db");
+    }
     
     connection.end;
 }

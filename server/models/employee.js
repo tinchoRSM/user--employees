@@ -1,6 +1,7 @@
-const { DataTypes } = require("sequelize");
+const {DataTypes} = require("sequelize");
+const sequelize = require("../database/database.js")
 
-const employeeModel = {
+const Employee = sequelize.define('employee',{
     Name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -25,6 +26,6 @@ const employeeModel = {
         type: DataTypes.DECIMAL,
         allowNull: false
     }
-};
+});
 
-module.exports = employeeModel;
+module.exports = Employee;
