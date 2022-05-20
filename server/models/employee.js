@@ -2,11 +2,11 @@ const {DataTypes} = require("sequelize");
 const sequelize = require("../database/database.js")
 
 const Employee = sequelize.define('employee',{
-    Name: {
+    name: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    Adress: {
+    adress: {
         type: DataTypes.STRING,
         allowNull: false
     },   

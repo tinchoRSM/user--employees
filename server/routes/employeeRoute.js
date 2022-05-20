@@ -1,8 +1,10 @@
 const employeeRoute = require("express").Router();
 const employeeControler = require("../controllers/employeeControler.js");
 
-employeeRoute.get('/', employeeControler.getAllEmployees);
-employeeRoute.get('/:employeeId', employeeControler.getEmployeeById);
+employeeRoute.post('/', employeeControler.getAllEmployees);
+employeeRoute.post('/createEmployee', employeeControler.createEmployee);
+employeeRoute.put('/editEmployeeById', employeeControler.getEmployeeById);
+employeeRoute.delete('/', employeeControler.deleteEmployee);
 
 
 module.exports = employeeRoute;

@@ -7,10 +7,10 @@ const getUserById =  (req,res) =>{
     res.send({message: message});
 }
 
-const loginUser = async (req,res) =>{
+const loginUser = async (req,res,next) =>{
 
     try {
-
+        
         const user = {
             email: req.body.email,
             password: req.body.password
@@ -21,12 +21,11 @@ const loginUser = async (req,res) =>{
         if(!login){
             throw new Error("Cound not log in");
         }
-
         message = "Succsefuly loged in!"
         res.send({message: message});
         
     } catch (error) {
-        throw new Error(error);
+        res.send({message: error.message});
     }
 }
 

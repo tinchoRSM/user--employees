@@ -1,3 +1,5 @@
+const res = require("express/lib/response");
+const Employee = require("../models/employee");
 const User = require("../models/user");
 
 const createDefaultUser = async () =>{
@@ -10,15 +12,9 @@ const createDefaultUser = async () =>{
     
         return newUser.toJSON();
     } catch (error) {
-        throw new Error("Could not created default user" + error.message);
+        return -1;
     }
    
-}
-
-const getAllUsers = async () => {
-    const users = await User.findAll();
-
-    return JSON.stringify(users, null, 2);
 }
 
 const loginComfirm = async (user) =>{
@@ -37,13 +33,29 @@ const loginComfirm = async (user) =>{
         
         return false;
     } catch (error) {
-        throw new Error("Cound not find user with that credentials"+ error.message);
+        return false;
     }
     
 }
 
+const getAllEmployees = async (userId) =>{
+
+    try {
+        const employees = await User.findByPk(userId,{
+            include: Employee
+        })
+
+        return JSON.stringify(employees, null, 2);
+    
+    } catch (error) {
+        return -1;
+    }
+
+}
+
+
 module.exports = {
     createDefaultUser,
-    getAllUsers,
-    loginComfirm
+    loginComfirm,
+    getAllEmployees
 }
