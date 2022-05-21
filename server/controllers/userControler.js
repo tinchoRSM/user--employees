@@ -1,14 +1,22 @@
-const userController = require("../services/userServices");
+const userService = require("../services/userServices");
 
 
-const getUserById =  (req,res) =>{
-    message = `Getting user by id ${req.params.userId}`;
-    
-    res.send({message: message});
+const createUser =  (req,res) =>{
+    try {
+        const newUser = {
+            email: req.body.email,
+            password: req.body.password
+        }
+
+        const createdUser = userService.createNewUser(newUser);
+
+        res.send({message: createUser})
+    } catch (error) {
+        
+    }
 }
 
-const loginUser = async (req,res,next) =>{
-
+const loginUser = async (req,res) =>{
     try {
         
         const user = {
@@ -16,7 +24,7 @@ const loginUser = async (req,res,next) =>{
             password: req.body.password
         }
         
-        const login = await userController.loginComfirm(user);
+        const login = await userService.checkEmailAndPassword(user);
 
         if(!login){
             throw new Error("Cound not log in");
@@ -30,6 +38,6 @@ const loginUser = async (req,res,next) =>{
 }
 
 module.exports = {
-    getUserById,
+    createUser,
     loginUser
 }

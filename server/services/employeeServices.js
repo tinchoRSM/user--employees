@@ -15,8 +15,6 @@ const createEmployee = async (employee) =>{
             salary: employee.salary
         });
 
-
-
     } catch (error) {
         res.send({message: error.message});
     }

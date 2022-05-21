@@ -3,50 +3,60 @@ const Employee = require("../models/employee");
 const User = require("../models/user");
 
 const createDefaultUser = async () =>{
-
     try {
-        const newUser = await User.create({
+        const newDefaultUser = await User.create({
             email: "tinchoRSM@gmail.com",
             password: "123456"
         });
     
-        return newUser.toJSON();
+        return newDefaultUser.toJSON();
     } catch (error) {
         return -1;
     }
    
 }
 
-const loginComfirm = async (user) =>{
-    
+const createNewUser = async (user) =>{
     try {
-        const data = await User.findAll({
+        const newUser = await User.create({
+            email: user.email,
+            password: user.password
+        });
+
+        return newUser.toJSON();
+    } catch (error) {
+        return -1
+    }
+}
+
+const checkEmailAndPassword = async (user) =>{
+    try {
+        const data = await User.findOne({
             where: {
                 email: user.email,
                 password: user.password
             }
         });
 
-        if(data.length > 0){
+        if(data){
             return true;
         }
-        
         return false;
     } catch (error) {
-        return false;
+        return -1;
     }
     
 }
 
 const getAllEmployees = async (userId) =>{
-
     try {
         const employees = await User.findByPk(userId,{
-            include: Employee
+            include: [Employee]
         })
 
-        return JSON.stringify(employees, null, 2);
-    
+        console.log("employees");
+
+        return employees.toJSON;
     } catch (error) {
         return -1;
     }
@@ -56,6 +66,7 @@ const getAllEmployees = async (userId) =>{
 
 module.exports = {
     createDefaultUser,
-    loginComfirm,
+    createNewUser,
+    checkEmailAndPassword,
     getAllEmployees
 }
