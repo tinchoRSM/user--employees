@@ -3,7 +3,7 @@ const employeeControler = require("../controllers/employeeControler.js");
 
 employeeRoute.post('/', employeeControler.sendUserEmployees);
 employeeRoute.post('/createEmployee', employeeControler.createEmployee);
-employeeRoute.put('/editEmployeeById', employeeControler.getEmployeeById);
+employeeRoute.put('/editEmployee', employeeControler.updatedEmployee);
 employeeRoute.delete('/', employeeControler.deleteEmployee);
 
 

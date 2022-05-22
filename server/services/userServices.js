@@ -56,7 +56,7 @@ const getAllEmployees = async (userId) =>{
 
         console.log("employees");
 
-        return employees.toJSON;
+        return employees.toJSON();
     } catch (error) {
         return -1;
     }

@@ -10,9 +10,9 @@ const createUser =  (req,res) =>{
 
         const createdUser = userService.createNewUser(newUser);
 
-        res.send({message: createUser})
+        res.send({message: createdUser})
     } catch (error) {
-        
+        res.send({message: error.message});
     }
 }
 
