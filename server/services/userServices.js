@@ -54,8 +54,6 @@ const getAllEmployees = async (userId) =>{
             include: [Employee]
         })
 
-        console.log("employees");
-
         return employees.toJSON();
     } catch (error) {
         return -1;

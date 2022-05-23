@@ -42,9 +42,11 @@ const deleteEmployee = async (employeeId) =>{
             where: {id: employeeId}
         })
 
-        console.log(deltedEmploey);
+        if(deltedEmploey == 1){
+            return true;
+        }
 
-        return true;
+        return false;
     } catch (error) {
         return -1;
     }
