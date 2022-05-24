@@ -29,4 +29,15 @@ export class EmployeeDetailsComponent implements OnInit {
       .subscribe(res => this.employee = res.message);
   }
 
+  goBack(): void{
+    this.location.back();
+  }
+
+  updateEmployee(): void{
+    if(this.employee){
+      this.employeeService.updateEmployeeByid(this.employee.id,this.employee)
+        .subscribe(()=> this.goBack());
+    }
+  }
+
 }

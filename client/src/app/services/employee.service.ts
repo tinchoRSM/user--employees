@@ -36,8 +36,13 @@ export class EmployeeService {
     return this.http.post(this.apiURL + `/getEmployee`,employeeId, this.httpOptions);
   }
 
-  updateEmployeeByid(id: number,) : Observable<any>{
-    return of(1);
+  updateEmployeeByid(id: number, data: Employee) : Observable<any>{
+    const employee = {
+      id: id,
+      data: data
+    }
+    
+    return this.http.put(this.apiURL + `/editEmployee`,employee, this.httpOptions);
   }
 
   deleteEmployeeByid(id: number) : Observable<any>{

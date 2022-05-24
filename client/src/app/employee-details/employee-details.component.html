@@ -12,7 +12,7 @@
     </div>
     <div>
         <label for="employee-phone">Phone: </label>
-        <input id="employee-phone" [(ngModel)]="employee.name" placeholder="phone">
+        <input id="employee-phone" [(ngModel)]="employee.phone" placeholder="phone">
     </div>
     <div>
         <label for="employee-department">Department: </label>
@@ -26,6 +26,9 @@
         <label for="employee-salary">Salary: </label>
         <input id="employee-salary" [(ngModel)]="employee.salary" placeholder="salary">
     </div>
-  
+    
+    <button type="button" (click)="goBack()">Go back</button>
+    <button type="button" (click)="updateEmployee()">Update</button>
+
   </div>
 
