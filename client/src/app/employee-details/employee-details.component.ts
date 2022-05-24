@@ -24,8 +24,8 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   getEmployee(): void{
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.employeeService.getEmployeeByid(id)
+    const employeeId = Number(this.route.snapshot.paramMap.get('id'));
+    this.employeeService.getEmployeeByid(employeeId)
       .subscribe(res => this.employee = res.message);
   }
 
@@ -38,6 +38,13 @@ export class EmployeeDetailsComponent implements OnInit {
       this.employeeService.updateEmployeeByid(this.employee.id,this.employee)
         .subscribe(()=> this.goBack());
     }
+  }
+
+  deleteEmployee(): void {
+    const employeeId = Number(this.route.snapshot.paramMap.get('id'));
+    this.employeeService.deleteEmployeeByid(employeeId)
+      .subscribe(()=> this.goBack());
+    
   }
 
 }
