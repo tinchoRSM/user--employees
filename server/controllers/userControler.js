@@ -24,13 +24,12 @@ const loginUser = async (req,res) =>{
             password: req.body.password
         }
         
-        const login = await userService.checkEmailAndPassword(user);
+        const loginUser = await userService.checkEmailAndPassword(user);
 
-        if(!login){
-            throw new Error("Cound not log in");
+        if(loginUser < 0){
+            throw new Error("failed");
         }
-        message = "Succsefuly loged in!"
-        res.send({message: message});
+        res.send({message: loginUser});
         
     } catch (error) {
         res.send({message: error.message});

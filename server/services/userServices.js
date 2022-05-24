@@ -38,10 +38,9 @@ const checkEmailAndPassword = async (user) =>{
             }
         });
 
-        if(data){
-            return true;
-        }
-        return false;
+        
+        return data.toJSON();
+
     } catch (error) {
         return -1;
     }

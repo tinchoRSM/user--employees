@@ -5,9 +5,9 @@ const employeeService = require("../services/employeeServices.js");
 const sendUserEmployees = async (req,res) =>{
     try {
         const userId = req.body.userId;
-
+        
         const employees = await userService.getAllEmployees(userId);
-
+        
         res.send({message: employees.employees});
     } catch (error) {
         res.send({message: error.message});
