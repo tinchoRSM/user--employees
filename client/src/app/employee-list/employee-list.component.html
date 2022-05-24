@@ -1,7 +1,9 @@
 <ul class="heroes" *ngFor="let employee of employees">
     <li>
+        
+    <a routerLink="/employee/{{employee.id}}">
         <span >{{employee.id}} </span>
         <span >{{employee.name}}</span>
-
+    </a>
     </li>
   </ul>

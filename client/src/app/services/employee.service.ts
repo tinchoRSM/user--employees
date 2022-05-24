@@ -8,7 +8,7 @@ import { Employee } from '../models/Employee';
 })
 export class EmployeeService {
 
-  private userUrl = "http://localhost:5000/users/employees";
+  private apiURL = "http://localhost:5000/users/employees";
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -17,17 +17,31 @@ export class EmployeeService {
     private http: HttpClient
   ) { }
 
-
+  
 
   getUserEmployees(id: number) : Observable<any>{
     const userId = {userId: id};
 
-    return this.http.post(this.userUrl, userId, this.httpOptions)
+    return this.http.post(this.apiURL, userId, this.httpOptions)
         .pipe(
           tap(_ => console.log(`Attempt getting users employees`)),
           catchError(this.handleError<any>('Cound get users employees'))
         );
 
+  }
+
+  getEmployeeByid(id: number) : Observable<any>{
+    const employeeId = {employeeId: id};
+
+    return this.http.post(this.apiURL + `/getEmployee`,employeeId, this.httpOptions);
+  }
+
+  updateEmployeeByid(id: number,) : Observable<any>{
+    return of(1);
+  }
+
+  deleteEmployeeByid(id: number) : Observable<any>{
+    return of(1);
   }
 
 

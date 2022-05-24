@@ -1,1 +1,31 @@
-<p>employee-details works!</p>
+<div *ngIf="employee">
+
+    <h2>{{employee.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{employee.id}}</div>
+    <div>
+      <label for="employee-name">Name: </label>
+      <input id="employee-name" [(ngModel)]="employee.name" placeholder="name">
+    </div>
+    <div>
+        <label for="employee-adress">Adress: </label>
+        <input id="employee-adress" [(ngModel)]="employee.adress" placeholder="adress">
+    </div>
+    <div>
+        <label for="employee-phone">Phone: </label>
+        <input id="employee-phone" [(ngModel)]="employee.name" placeholder="phone">
+    </div>
+    <div>
+        <label for="employee-department">Department: </label>
+        <input id="employee-department" [(ngModel)]="employee.department" placeholder="department">
+    </div>
+    <div>
+        <label for="employee-position">Position: </label>
+        <input id="employee-position" [(ngModel)]="employee.position" placeholder="position">
+    </div>
+    <div>
+        <label for="employee-salary">Salary: </label>
+        <input id="employee-salary" [(ngModel)]="employee.salary" placeholder="salary">
+    </div>
+  
+  </div>
+

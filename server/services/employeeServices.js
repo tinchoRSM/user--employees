@@ -20,6 +20,17 @@ const createEmployee = async (employee) =>{
     }
 }
 
+const getEmployeeById = async (employeeId) =>{
+    try {
+        const employeeFound = await Employee.findByPk(employeeId);
+
+        return employeeFound.toJSON();
+
+    } catch (error) {
+        return -1;
+    }
+}
+
 const updateEmployee = async (employeeId,data) =>{
     try {
         const updatedEmployee = await Employee.update(data,{
@@ -55,5 +66,6 @@ const deleteEmployee = async (employeeId) =>{
 module.exports = {
     createEmployee,
     updateEmployee,
+    getEmployeeById,
     deleteEmployee
 }

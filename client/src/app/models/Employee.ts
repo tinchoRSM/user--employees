@@ -3,7 +3,7 @@ export interface Employee{
     name: string,
     adress: string,
     phone: string,
-    departmen: string,
+    department: string,
     position: string,
     salary: number,
     userId: number

@@ -14,6 +14,22 @@ const sendUserEmployees = async (req,res) =>{
     }
 }
 
+const getEmployee = async(req,res) => {
+    try {
+        const employeeId = req.body.employeeId;
+
+        const employeeFound = await employeeService.getEmployeeById(employeeId);
+
+        if(employeeFound < 0){
+            throw new Error("Employee with that id not found.");
+        }
+
+        res.send({message: employeeFound});
+    } catch (error) {
+        res.send({message: error.message});
+    }
+}
+
 const createEmployee = async (req,res) =>{
     try {
         const newEmployee = {
@@ -58,7 +74,7 @@ const updatedEmployee = async(req,res) =>{
 
 const deleteEmployee = async (req,res) =>{
     try {
-        const employeeId = req.body.id
+        const employeeId = req.body.employeeId
 
         const deletedEmployee = await employeeService.deleteEmployee(employeeId);
 
@@ -76,6 +92,7 @@ module.exports = {
     sendUserEmployees,
     updatedEmployee,
     createEmployee,
+    getEmployee,
     deleteEmployee
 
 }
