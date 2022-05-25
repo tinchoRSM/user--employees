@@ -1,21 +1,81 @@
-<h3>Login</h3>
+<h3 class="center">Login</h3>
 
-<form [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+<div class="login--wraper">
+  <form [formGroup]="loginForm" (ngSubmit)="tryLogin()">
+        
 
-    <div>
-        <label for="email">
-            Email
-        </label>
-        <input id="email" type="email" formControlName="email">
-      </div>
+        <!-- Email input -->
+        <div class="input--wrap">
+          <label class="input--label" for="email">
+              Email
+          </label>
+          <div class="input--packed">
+            <input 
+            class="input--input" 
+            type="email" 
+            formControlName="email" 
+            placeholder="email"
+            required>
+            <i 
+            *ngIf="loginForm.controls['email'].invalid 
+             && (loginForm.controls['email'].errors?.['required'] || loginForm.controls['email'].touched)" 
+            class="fa-solid fa-circle-exclamation red">
+            </i>
+          </div>
+
+          <div class="input--hints">
+            <p class="input--hint" 
+            *ngIf="loginForm.controls['email'].errors?.['required'] 
+              && loginForm.controls['email'].touched">
+              Email is required. 
+            </p>
+            <p class="input--hint" *ngIf="loginForm.controls['email'].invalid 
+              && loginForm.controls['email'].touched ">
+              Email is Invalid. 
+            </p>
+          </div> 
+        </div>
+
+        <!-- Password input -->
+        <div class="input--wrap">
+          <label class="input--label" for="password">
+              Password
+          </label>
+          <div class="input--packed">
+            <input 
+            class="input--input" 
+            type="password" 
+            formControlName="password" 
+            placeholder="password"
+            required>
+            <i 
+            *ngIf="loginForm.controls['password'].invalid 
+             && (loginForm.controls['password'].errors?.['required'] || loginForm.controls['password'].touched)" 
+            class="fa-solid fa-circle-exclamation red">
+            </i>
+          </div>
+
+          <div class="input--hints">
+            <p class="input--hint" 
+            *ngIf="loginForm.controls['password'].errors?.['required'] 
+              && loginForm.controls['password'].touched">
+              Password is required. 
+            </p>
+            <p class="input--hint" *ngIf="loginForm.controls['password'].invalid 
+              && loginForm.controls['password'].touched ">
+              Password is Invalid. 
+            </p>
+          </div> 
+        </div>
     
-      <div>
-        <label for="password">
-            Password
-        </label>
-        <input id="password" type="password" formControlName="password">
-      </div>
+      <button class="button" type="submit">Login</button>
+  </form>
 
-    <button class="button" type="submit">Login</button>
-</form>
+  <div *ngIf="loginForm.errors?.['invalidEmail']">
+    Emali or Password incorrect!
+  </div>
+
+</div>
+
+
 

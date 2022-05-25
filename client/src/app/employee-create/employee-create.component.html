@@ -1,32 +1,32 @@
 <div *ngIf="employee">
 
-    <h2>{{employee.name | uppercase}} Details</h2>
-    <div>
-      <label for="employee-name">Name: </label>
-      <input id="employee-name" [(ngModel)]="employee.name" placeholder="name">
-    </div>
-    <div>
-        <label for="employee-adress">Adress: </label>
-        <input id="employee-adress" [(ngModel)]="employee.adress" placeholder="adress">
-    </div>
-    <div>
-        <label for="employee-phone">Phone: </label>
-        <input id="employee-phone" [(ngModel)]="employee.phone" placeholder="phone">
-    </div>
-    <div>
-        <label for="employee-department">Department: </label>
-        <input id="employee-department" [(ngModel)]="employee.department" placeholder="department">
-    </div>
-    <div>
-        <label for="employee-position">Position: </label>
-        <input id="employee-position" [(ngModel)]="employee.position" placeholder="position">
-    </div>
-    <div>
-        <label for="employee-salary">Salary: </label>
-        <input id="employee-salary" [(ngModel)]="employee.salary" placeholder="salary">
-    </div>
-    
+    <h2 class="center">Creating Employee</h2>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-name">Name: </label>
+            <input class="input--input" id="employee-name" [(ngModel)]="employee.name" placeholder="name">
+        </div>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-adress">Adress: </label>
+            <input class="input--input" id="employee-adress" [(ngModel)]="employee.adress" placeholder="adress">
+        </div>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-phone">Phone: </label>
+            <input class="input--input" id="employee-phone" [(ngModel)]="employee.phone" placeholder="phone">
+        </div>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-department">Department: </label>
+            <input class="input--input" id="employee-department" [(ngModel)]="employee.department" placeholder="department">
+        </div>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-position">Position: </label>
+            <input class="input--input" id="employee-position" [(ngModel)]="employee.position" placeholder="position">
+        </div>
+        <div class="input--wrap">
+            <label class="input--label" for="employee-salary">Salary: </label>
+            <input class="input--input" id="employee-salary" [(ngModel)]="employee.salary" placeholder="salary">
+        </div>
     <button type="button" (click)="createEmployee()">Create Employee</button>
+    <button type="button" (click)="goBack()">Go back</button>
 
 
   </div>

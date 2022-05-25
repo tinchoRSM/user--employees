@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { regexValidators } from '../helpers/regex';
 import { User } from '../models/User';
 import { UserService } from '../services/user.service';
 
@@ -17,10 +18,10 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  loginForm = this.formBuilder.group({
-    email: '',
-    password: ''
-  });
+  loginForm: FormGroup = this.formBuilder.group({
+    email: new FormControl("", [Validators.required, Validators.pattern(regexValidators.email)] ),
+    password: new FormControl("", [Validators.required ])
+  }); 
 
   constructor(
     private userService: UserService,
@@ -36,6 +37,11 @@ export class LoginComponent implements OnInit {
   }
 
   tryLogin(): void{
+
+    if(!this.loginForm.valid){
+      return;
+    }
+
     this.user = this.loginForm.value;
 
     this.userService.loginUser(this.user)
@@ -45,8 +51,10 @@ export class LoginComponent implements OnInit {
           this.redirect(res.message.id);
           
         }
-
-          
+        else {
+          this.loginForm.reset();
+          this.loginForm.setErrors({invalidEmail: true})
+        };
       });
   }
 }

@@ -1,12 +1,44 @@
-<ul class="heroes" *ngFor="let employee of employees">
-    <li>
-        
-    <a routerLink="/employee/{{employee.id}}">
-        <span >{{employee.id}} </span>
-        <span >{{employee.name}}</span>
-    </a>
-    </li>
-  </ul>
+<div  
+    class="employee--card" 
+    *ngFor="let employee of employees"
+    routerLink="/employee/{{employee.id}}"
+    >
+        <div class="employee--inforow">
+            <i class="fa-solid fa-image-portrait"></i>
+            <span class="employee--text">{{employee.name}}</span>
+        </div>
 
-  <a routerLink="/employee/create">Create</a>
+        <div class="employee--inforow">
+            <i class="fa-solid fa-phone"></i>
+            <span class="employee--text">{{employee.phone}}</span>
+        </div>
+
+        <div class="employee--inforow">
+            <i class="fa-solid fa-map"></i>
+            <span class="employee--text">{{employee.adress}}</span>
+        </div>
+
+        <div class="employee--inforow">
+            <i class="fa-solid fa-people-group"></i>
+            <span class="employee--text">{{employee.department}}</span>
+        </div>
+
+        <div class="employee--inforow">
+            <i class="fa-solid fa-briefcase"></i>
+            <span class="employee--text">{{employee.position}}</span>
+        </div>
+
+        <div class="employee--inforow">
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <span class="employee--text">{{employee.salary}}</span>
+        </div>
+
+</div>
+
+<div 
+    class="employee--card employee--create"
+    routerLink="/employee/create"
+    >
+    <i class="fa-solid fa-circle-plus fa-2xl"></i>
+</div>
 

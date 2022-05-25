@@ -21,19 +21,18 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(
     private employeService: EmployeeService,
-    private userService: UserService
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
     this.user = this.userService.getUser();
     this.getEmployees();
+
   }
 
   getEmployees(): void{
     this.employeService.getUserEmployees(this.user.id)
       .subscribe( res => this.employees = res.message)
   }
-
- 
 
 }

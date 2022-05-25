@@ -17,8 +17,6 @@ export class EmployeeService {
     private http: HttpClient
   ) { }
 
-  
-
   getUserEmployees(id: number) : Observable<any>{
     const userId = {userId: id};
 
