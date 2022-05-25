@@ -8,7 +8,7 @@ const dbInitilize = () => {
     });
     
     try {
-        connection.query(`CREATE DATABASE IF NOT EXISTS UserEmployees`);
+        connection.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_DB}`);
 
     } catch (error) {
         throw new Error("Could not create base db");

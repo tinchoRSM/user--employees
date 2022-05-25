@@ -7,7 +7,7 @@ const dbInitilize = require("./database/db.initialize.js");
 
 const User = require("./models/user.js");
 const Employee = require("./models/employee.js");
-
+const { createDefaultUser } = require("./services/userServices.js");
 
 
 const port = process.env.PORT || 3000;
@@ -31,27 +31,9 @@ Employee.belongsTo(User);
 User.sync();
 Employee.sync();
 
-
-
-// User.create({
-//     email: "tinchoRSM@gmail.com",
-//     password: "123456"
-// }).then(console.log("User Created"));
-
-// Employee.create({
-//     name: "Ivan Petrov Andonov",
-//     adress: "st. Vasil levski 13",
-//     phone: "099885468",
-//     department: "IT", 
-//     position: "Designer",
-//     salary: 3400,
-//     userId: 1
-// }).then(console.log("Employee created"));
-
-
-// User.findByPk(1,{include: [Employee]}).then(data => console.log(JSON.stringify(data,null,2)))
-// Employee.findAll().then(data => console.log(JSON.stringify(data,null,2)))
-
+createDefaultUser();
+//email: "tinchoRSM@gmail.com",
+//password: "123456"
 
 app.listen(port, () =>{
     console.log(`Server started on port ${port}`);

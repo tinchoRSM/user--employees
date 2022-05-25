@@ -8,7 +8,7 @@ const createDefaultUser = async () =>{
             email: "tinchoRSM@gmail.com",
             password: "123456"
         });
-    
+        
         return newDefaultUser.toJSON();
     } catch (error) {
         return -1;
