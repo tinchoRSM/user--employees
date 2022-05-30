@@ -10,7 +10,7 @@ import { EmployeeService } from './employee.service';
 })
 export class UserService {
 
-  private userUrl = "http://localhost:5000/users/login";
+  private apiUrl = "http://localhost:5000/users/login";
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -34,7 +34,7 @@ export class UserService {
   }
 
   loginUser(user: User): Observable<any> {
-    return this.http.post(this.userUrl, user, this.httpOptions)
+    return this.http.post(this.apiUrl, user, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Attempt to login`)),
         catchError(this.handleError<any>('Cound not login'))

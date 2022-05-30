@@ -1,11 +1,12 @@
 const employeeRoute = require("express").Router();
 const employeeControler = require("../controllers/employeeControler.js");
+const { protect } = require("../middleware/auth.js");
 
-employeeRoute.post('/', employeeControler.sendUserEmployees);
-employeeRoute.post('/getEmployee', employeeControler.getEmployee);
-employeeRoute.post('/createEmployee', employeeControler.createEmployee);
-employeeRoute.put('/editEmployee', employeeControler.updatedEmployee);
-employeeRoute.delete('/deleteEmployee/:id', employeeControler.deleteEmployee);
+employeeRoute.post('/', protect, employeeControler.sendUserEmployees);
+employeeRoute.post('/getEmployee', protect, employeeControler.getEmployee);
+employeeRoute.post('/createEmployee',protect, employeeControler.createEmployee);
+employeeRoute.put('/editEmployee', protect, employeeControler.updatedEmployee);
+employeeRoute.delete('/deleteEmployee/:id', protect, employeeControler.deleteEmployee);
 
 
 module.exports = employeeRoute;

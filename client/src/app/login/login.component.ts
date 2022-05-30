@@ -18,16 +18,18 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  loginForm: FormGroup = this.formBuilder.group({
-    email: new FormControl("", [Validators.required, Validators.pattern(regexValidators.email)] ),
-    password: new FormControl("", [Validators.required ])
-  }); 
+  loginForm: FormGroup; 
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
     private router: Router
-  ) { }
+  ) { 
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl("", [Validators.required, Validators.pattern(regexValidators.email)] ),
+      password: new FormControl("", [Validators.required ])
+    });
+  }
 
   ngOnInit(): void {
   }

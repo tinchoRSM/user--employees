@@ -20,5 +20,6 @@ export class AppComponent {
   login(): void{
     this.loged = true;
   }
+    
 
 }

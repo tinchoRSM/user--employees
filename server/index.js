@@ -9,7 +9,6 @@ const User = require("./models/user.js");
 const Employee = require("./models/employee.js");
 const { createDefaultUser } = require("./services/userServices.js");
 
-
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -34,6 +33,7 @@ Employee.sync();
 createDefaultUser();
 //email: "tinchoRSM@gmail.com",
 //password: "123456"
+
 
 app.listen(port, () =>{
     console.log(`Server started on port ${port}`);

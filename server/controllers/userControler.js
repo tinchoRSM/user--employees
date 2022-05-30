@@ -1,5 +1,6 @@
 const userService = require("../services/userServices");
-
+const jwt = require("jsonwebtoken");
+const jwtGenerator = require("../helpers/jwtGenerator.js")
 
 const createUser =  async(req,res) =>{
     try {
@@ -10,9 +11,18 @@ const createUser =  async(req,res) =>{
 
         const createdUser = await userService.createNewUser(newUser);
 
-        res.send({message: createdUser})
+        if(createdUser < 0){
+            throw new Error("User creating failed!");
+        }
+
+        res.status(201).send({message: {
+            id: createdUser.id,
+            email: createdUser.email,
+            token: jwtGenerator.generateToken(createdUser.id)
+        }});
     } catch (error) {
-        res.send({message: error.message});
+        res.status(400).send({message: error.message});
+        throw new Error("User creating failed!");
     }
 }
 
@@ -29,10 +39,14 @@ const loginUser = async (req,res) =>{
         if(loginUser < 0){
             throw new Error("failed");
         }
-        res.send({message: loginUser});
-        
+
+        res.status(201).send({message: {
+            id: loginUser.id,
+            email: loginUser.email,
+            token: jwtGenerator.generateToken(loginUser.id)
+        }});   
     } catch (error) {
-        res.send({message: error.message});
+        res.status(400).send({message: error.message});
     }
 }
 

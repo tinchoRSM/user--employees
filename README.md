@@ -144,3 +144,8 @@ Login With default user
 
 
 
+# TODO 
+
+- User auth
+- status response
+- validation 

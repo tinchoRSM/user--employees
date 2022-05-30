@@ -8,9 +8,9 @@ const sendUserEmployees = async (req,res) =>{
         
         const employees = await userService.getAllEmployees(userId);
         
-        res.send({message: employees.employees});
+        res.status(200).send({message: employees.employees});
     } catch (error) {
-        res.send({message: error.message});
+        res.status(404).send({message: error.message});
     }
 }
 
@@ -24,9 +24,9 @@ const getEmployee = async(req,res) => {
             throw new Error("Employee with that id not found.");
         }
 
-        res.send({message: employeeFound});
+        res.status(200).send({message: employeeFound});
     } catch (error) {
-        res.send({message: error.message});
+        res.status(404).send({message: error.message});
     }
 }
 
@@ -44,9 +44,9 @@ const createEmployee = async (req,res) =>{
 
         const createdEmployee = await employeeService.createEmployee(newEmployee);
 
-        res.send({message: createdEmployee});
+        res.status(201).send({message: createdEmployee});
     } catch (error) {
-        res.send({message: error.message});
+        res.status(400).send({message: error.message});
     }
 }
 
@@ -65,9 +65,9 @@ const updatedEmployee = async(req,res) =>{
             throw new Error("Update employee failed");
         }
 
-        res.send({message: "Update succssesfull"});
+        res.status(200).send({message: "Update succssesfull"});
     } catch (error) {
-        res.send({message: error.message});
+        res.status(400).send({message: error.message});
     }
 }
 
@@ -82,9 +82,9 @@ const deleteEmployee = async (req,res) =>{
             throw new Error("Deleting employee failed")
         }
 
-        res.send({message: "Deleted succsesfull"})
+        res.status(200).send({message: "Deleted succsesfull"})
     } catch (error) {
-        res.send({message: error.message});
+        res.status(400).send({message: error.message});
     }
 }
 
