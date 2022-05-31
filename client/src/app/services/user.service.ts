@@ -1,7 +1,7 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { User } from '../models/User';
 import { EmployeeService } from './employee.service';
@@ -44,7 +44,7 @@ export class UserService {
     return this.http.post(this.apiUrl, user, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Attempt to login`)),
-        catchError(this.handleError<any>('Cound not login'))
+        catchError(this.handleError)
       );
   }
 
@@ -55,18 +55,16 @@ export class UserService {
     }
   }
   
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-  
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-  
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-  
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
+  // Error
+  handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
+}
 }

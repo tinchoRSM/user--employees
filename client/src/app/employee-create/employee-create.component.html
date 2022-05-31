@@ -1,30 +1,203 @@
 <div *ngIf="employee">
 
+    
     <h2 class="center">Creating Employee</h2>
+
+    <form class="create--employee" [formGroup]="createForm" (ngSubmit)="createEmployee()">
+
+        <!-- name input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-name">Name: </label>
-            <input class="input--input" id="employee-name" [(ngModel)]="employee.name" placeholder="name">
-        </div>
+            <label class="input--label" for="name">
+                Name
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="text" 
+              formControlName="name" 
+              placeholder="name"
+              required>
+              <i 
+              *ngIf="createForm.controls['name'].invalid 
+               && (createForm.controls['name'].errors?.['required'] || createForm.controls['name'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['name'].errors?.['required'] 
+                && createForm.controls['name'].touched">
+                Name is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['name'].invalid 
+                && createForm.controls['name'].touched ">
+                Name is Invalid. 
+              </p>
+            </div> 
+          </div>
+
+          <!-- adress input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-adress">Adress: </label>
-            <input class="input--input" id="employee-adress" [(ngModel)]="employee.adress" placeholder="adress">
-        </div>
+            <label class="input--label" for="adress">
+                Adress
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="text" 
+              formControlName="adress" 
+              placeholder="adress"
+              required>
+              <i 
+              *ngIf="createForm.controls['adress'].invalid 
+               && (createForm.controls['adress'].errors?.['required'] || createForm.controls['adress'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['adress'].errors?.['required'] 
+                && createForm.controls['adress'].touched">
+                Adress is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['adress'].invalid 
+                && createForm.controls['adress'].touched ">
+                Adress is Invalid. 
+              </p>
+            </div> 
+          </div>
+
+          <!-- phone input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-phone">Phone: </label>
-            <input class="input--input" id="employee-phone" [(ngModel)]="employee.phone" placeholder="phone">
-        </div>
+            <label class="input--label" for="phone">
+                Phone
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="tel" 
+              formControlName="phone" 
+              placeholder="phone"
+              required>
+              <i 
+              *ngIf="createForm.controls['phone'].invalid 
+               && (createForm.controls['phone'].errors?.['required'] || createForm.controls['phone'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['phone'].errors?.['required'] 
+                && createForm.controls['phone'].touched">
+                Phone is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['phone'].invalid 
+                && createForm.controls['phone'].touched ">
+                Phone is Invalid. 
+              </p>
+            </div> 
+          </div>
+
+          <!-- department input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-department">Department: </label>
-            <input class="input--input" id="employee-department" [(ngModel)]="employee.department" placeholder="department">
-        </div>
+            <label class="input--label" for="department">
+                Department
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="text" 
+              formControlName="department" 
+              placeholder="department"
+              required>
+              <i 
+              *ngIf="createForm.controls['department'].invalid 
+               && (createForm.controls['department'].errors?.['required'] || createForm.controls['department'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['department'].errors?.['required'] 
+                && createForm.controls['department'].touched">
+                Department is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['department'].invalid 
+                && createForm.controls['department'].touched ">
+                Department is Invalid. 
+              </p>
+            </div> 
+          </div>
+
+          <!-- position input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-position">Position: </label>
-            <input class="input--input" id="employee-position" [(ngModel)]="employee.position" placeholder="position">
-        </div>
+            <label class="input--label" for="position">
+                Position
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="text" 
+              formControlName="position" 
+              placeholder="position"
+              required>
+              <i 
+              *ngIf="createForm.controls['position'].invalid 
+               && (createForm.controls['position'].errors?.['required'] || createForm.controls['position'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['position'].errors?.['required'] 
+                && createForm.controls['position'].touched">
+                Position is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['position'].invalid 
+                && createForm.controls['position'].touched ">
+                Position is Invalid. 
+              </p>
+            </div> 
+          </div>
+
+          <!-- salary input -->
         <div class="input--wrap">
-            <label class="input--label" for="employee-salary">Salary: </label>
-            <input class="input--input" id="employee-salary" [(ngModel)]="employee.salary" placeholder="salary">
-        </div>
+            <label class="input--label" for="salary">
+                Salary
+            </label>
+            <div class="input--packed">
+              <input 
+              class="input--input" 
+              type="text" 
+              formControlName="salary" 
+              placeholder="salary"
+              required>
+              <i 
+              *ngIf="createForm.controls['salary'].invalid 
+               && (createForm.controls['salary'].errors?.['required'] || createForm.controls['salary'].touched)" 
+              class="fa-solid fa-circle-exclamation red">
+              </i>
+            </div>
+  
+            <div class="input--hints">
+              <p class="input--hint" 
+              *ngIf="createForm.controls['salary'].errors?.['required'] 
+                && createForm.controls['salary'].touched">
+                Salary is required. 
+              </p>
+              <p class="input--hint" *ngIf="createForm.controls['salary'].invalid 
+                && createForm.controls['salary'].touched ">
+                Salary is Invalid. 
+              </p>
+            </div> 
+          </div>
+    </form>
+
     <button type="button" (click)="createEmployee()">Create Employee</button>
     <button type="button" (click)="goBack()">Go back</button>
 

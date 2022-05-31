@@ -49,16 +49,16 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.user)
       .subscribe((res) => {
         if(res.message !='failed'){
-          this.userService.setUser(res.message);
-          console.log(res.message.token);
+          console.log("hi");
+          
+          this.userService.setUser(res.message)
           localStorage.setItem('authToken', res.message.token);
           this.router.navigate(['dashboard']);
           
         }
-        else {
+      },(error) =>{
           this.loginForm.reset();
           this.loginForm.setErrors({invalidEmail: true})
-        };
       });
   }
 }

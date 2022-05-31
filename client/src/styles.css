@@ -9,9 +9,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 0 auto;
     padding: 10px;
-    
 }
 
 .input--label{
@@ -22,17 +21,20 @@
 }
 
 .input--packed{
-
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .input--input{
-    width: auto;
+    width: 90%;
     padding:15px;
     border-radius:15px;
     border: 1px solid transparent;
     transition: .3s border-color;
     box-shadow:4px 4px 10px rgba(0,0,0,0.20);
     margin-right: 10px;
+    align-self: stretch;
 }
 
 .input--input:hover {
