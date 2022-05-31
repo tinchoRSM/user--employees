@@ -39,7 +39,7 @@ const createEmployee = async (req,res) =>{
             department: req.body.department, 
             position: req.body.position,
             salary: req.body.salary,
-            userId: req.body.userId
+            userId: req.user.id
         }
 
         const createdEmployee = await employeeService.createEmployee(newEmployee);

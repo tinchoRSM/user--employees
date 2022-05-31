@@ -56,7 +56,7 @@ export class EmployeeCreateComponent implements OnInit {
 
   createEmployee(): void{
     if(this.createForm.valid){
-      this.employeeService.createEmployee(this.employee)
+      this.employeeService.createEmployee(this.createForm.value)
         .subscribe(()=> this.goBack());
     }
   }
