@@ -4,7 +4,7 @@ const employeeService = require("../services/employeeServices.js");
 
 const sendUserEmployees = async (req,res) =>{
     try {
-        const userId = req.body.userId;
+        const userId = req.user.id;
         
         const employees = await userService.getAllEmployees(userId);
         

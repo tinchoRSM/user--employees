@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  redirect(id: number): void{
+  redirect(): void{
     this.router.navigate(['dashboard']);
   }
 
@@ -50,7 +50,9 @@ export class LoginComponent implements OnInit {
       .subscribe((res) => {
         if(res.message !='failed'){
           this.userService.setUser(res.message);
-          this.redirect(res.message.id);
+          console.log(res.message.token);
+          localStorage.setItem('authToken', res.message.token);
+          this.router.navigate(['dashboard']);
           
         }
         else {

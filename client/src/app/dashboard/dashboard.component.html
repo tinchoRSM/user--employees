@@ -1,6 +1,8 @@
 <h3 class="center">Dashboard</h3>
 <div *ngIf="user">
     <h4>Welcome {{user.email}}</h4>
+    <button (click)="logOut()">Logout</button>
 </div>
+
 
 <app-employee-list></app-employee-list>
