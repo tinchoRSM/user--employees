@@ -17,15 +17,12 @@ export class EmployeeService {
     private http: HttpClient
   ) { }
 
-  getUserEmployees(id: number) : Observable<any>{
-    const userId = {userId: id};
-
-    return this.http.post(this.apiURL, userId, this.httpOptions)
+  getUserEmployees() : Observable<any>{
+    return this.http.get(this.apiURL, this.httpOptions)
         .pipe(
           tap(_ => console.log(`Attempt getting users employees`)),
           catchError(this.handleError<any>('Cound get users employees'))
         );
-
   }
 
   getEmployeeByid(id: number) : Observable<any>{

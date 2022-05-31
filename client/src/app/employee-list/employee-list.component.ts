@@ -13,15 +13,12 @@ export class EmployeeListComponent implements OnInit {
 
   employees: Employee[] = [];  
 
-  user: User = {
-    id: 0,
-    email: '',
-    password:''
-  };
+  user?: User ;
 
   constructor(
     private employeService: EmployeeService,
     private userService: UserService,
+    
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +28,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   getEmployees(): void{
-    this.employeService.getUserEmployees(this.user.id)
+    this.employeService.getUserEmployees()
       .subscribe( res => this.employees = res.message)
   }
 

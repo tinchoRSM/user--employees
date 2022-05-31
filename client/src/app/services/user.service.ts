@@ -1,5 +1,6 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { User } from '../models/User';
@@ -23,6 +24,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) { }
 
   setUser(user: User){
@@ -33,12 +35,24 @@ export class UserService {
     return this.user
   }
 
+  isLogedIn(): boolean{
+    let authToken = localStorage.getItem('authToken');
+    return authToken !== null ? true : false;
+  }
+
   loginUser(user: User): Observable<any> {
     return this.http.post(this.apiUrl, user, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Attempt to login`)),
         catchError(this.handleError<any>('Cound not login'))
       );
+  }
+
+  logOutUser(): void{
+    let removeToken = localStorage.removeItem('authToken');
+    if (removeToken == null) {
+      this.router.navigate(['login']);
+    }
   }
   
 
